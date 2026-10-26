@@ -1,0 +1,36 @@
+SELECT
+ Category,
+ SUM(
+  CASE
+  WHEN EXTRACT(YEAR FROM Order_Date)=2022
+  THEN Profit
+  END
+ )AS category_profit_2022,
+ SUM(
+  CASE
+  WHEN EXTRACT(YEAR FROM Order_Date) =2023
+  THEN Profit
+  END
+) AS category_profit_2023,
+SUM(
+  CASE
+  WHEN EXTRACT(YEAR FROM Order_Date)=2023
+  THEN profit
+  END
+)
+-
+SUM(
+  CASE 
+  WHEN EXTRACT (YEAR FROM Order_Date)=2022
+  THEN profit
+  END
+) AS category_profit_change
+FROM
+ fine-iterator-434303-q2.e_commerce_global_skincare.global_sincare_data
+WHERE
+ EXTRACT(YEAR FROM Order_Date) IN (2022,2023)
+GROUP BY
+ Category
+HAVING COUNT(DISTINCT EXTRACT(YEAR FROM Order_Date))=2
+ORDER BY
+ category_profit_change ASC;

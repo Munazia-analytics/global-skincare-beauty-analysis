@@ -1,0 +1,9 @@
+SELECT
+ EXTRACT(YEAR FROM Order_Date) AS year,
+ ROUND(AVG(Discount)*100,2) AS avg_discount
+FROM
+ fine-iterator-434303-q2.e_commerce_global_skincare.global_sincare_data
+ GROUP BY
+  year
+ORDER BY
+ year

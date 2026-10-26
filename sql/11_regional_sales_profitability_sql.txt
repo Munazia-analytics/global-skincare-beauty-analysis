@@ -1,0 +1,14 @@
+SELECT
+ Region,
+ SUM(Sales) AS total_sales,
+ SUM(Profit) AS total_profit,
+ ROUND(
+  (SUM(Profit)/SUM(Sales)) * 100,
+  2
+ ) AS profit_margin
+FROM
+ fine-iterator-434303-q2.e_commerce_global_skincare.global_sincare_data
+GROUP BY
+ Region
+ORDER BY
+ total_sales DESC
